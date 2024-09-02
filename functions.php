@@ -139,7 +139,9 @@ add_action( 'widgets_init', '_s_widgets_init' );
  */
 function _s_scripts() {
 	wp_enqueue_style( '_s-style', get_stylesheet_uri(), array(), _S_VERSION );
+	wp_enqueue_style( '_s-bootstrap', get_template_directory_uri(). '/css/gen/_s-bootstrap.css');
 	wp_enqueue_style( '_s-main', get_template_directory_uri(). '/css/gen/main.css');
+	// wp_enqueue_style( '_s-auskim-old', get_template_directory_uri(). '/css/auskim-old.css');
 	wp_style_add_data( '_s-style', 'rtl', 'replace' );
 
 	wp_enqueue_script( '_s-navigation', get_template_directory_uri() . '/js/navigation.js', array(), _S_VERSION, true );
@@ -149,6 +151,27 @@ function _s_scripts() {
 	}
 }
 add_action( 'wp_enqueue_scripts', '_s_scripts' );
+
+/**
+ * Custom Fonts.
+ * font-family: 'Nunito', sans-serif;
+ */
+function enqueue_custom_fonts(){
+	if(!is_admin()){
+		wp_register_style('source_sans_pro', 'https://fonts.googleapis.com/css2?family=Source+Sans+Pro:ital,wght@1,400;1,600;1,700&display=swap');
+		// wp_register_style('nunito', 'https://fonts.googleapis.com/css2?family=Nunito:wght@400;700&display=swap');
+		wp_register_style('auskim_old', 'https://fonts.googleapis.com/css?family=DM+Sans:400,500,700&display=swap');
+
+		wp_enqueue_style('source_sans_pro');
+		wp_enqueue_style('auskim_old');
+
+	}
+}
+
+
+add_action('wp_enqueue_scripts', 'enqueue_custom_fonts');
+
+
 
 /**
  * Implement the Custom Header feature.
