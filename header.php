@@ -20,69 +20,22 @@
 	<?php wp_head(); ?>
 </head>
 
-<body <?php body_class(); ?>>
+<body class="text-center" <?php body_class(); ?>>
 <?php wp_body_open(); ?>
-<div id="page" class="site">
+<div id="page" class="site cover-container d-flex h-100 mx-auto flex-column">
 	<a class="skip-link screen-reader-text" href="#primary"><?php esc_html_e( 'Skip to content', '_s' ); ?></a>
 
-	<div class="announement-bar pt-2 pb-2">
-		<div class="container">
-			<div class="row">
-
-				<div class="col-md-4">
-
-					<ul class="announement-bar__list">
-						<li>
-							<i class="bi bi-telephone rounded-circle"></i>
-							<a href="tel: +44 555 22211" class="text-decoration-none">+44 555 22211</a>
-						</li>
-
-						<li>
-							<i class="bi bi-envelope rounded-circle"></i>
-							<a href="mailto:hello@pawsgang.shop" class="text-decoration-none">hello@pawsgang.shop</a>
-						</li>
-					</ul>
-
-				</div>
-
-				<div class="col-md-8 d-flex justify-content-end">
-
-					<ul class="announement-bar__list">
-							<li>
-								<i class="bi bi-truck rounded-circle"></i> FREE EU SHIPPING
-							</li>
-
-							<li>
-								<i class="bi bi-calendar3-event rounded-circle"></i> 30 DAYS MONEYBACK GUARANTEE
-							</li>
-							
-							<li>
-								<i class="bi bi-person rounded-circle"></i> 24/7 CUSTOMER SUPPORT
-							</li>
-							
-					</ul>
-
-				</div>
-
-			</div>
-		</div>
-	</div>
-
-
-
-	<header id="masthead" class="site-header">
+	<header id="masthead" class="site-header p-3 mb-3">
 		<div class="site-branding">
+
+			 <!-- <object type="image/svg+xml" data="/juodas.svg" class="logo"></object>  -->
+
 			<?php
-			the_custom_logo();
-			if ( is_front_page() && is_home() ) :
-				?>
-				<h1 class="site-title"><a href="<?php echo esc_url( home_url( '/' ) ); ?>" rel="home"><?php bloginfo( 'name' ); ?></a></h1>
-				<?php
-			else :
-				?>
-				<p class="site-title"><a href="<?php echo esc_url( home_url( '/' ) ); ?>" rel="home"><?php bloginfo( 'name' ); ?></a></p>
-				<?php
-			endif;
+			echo '<a href="' . home_url() . '"">';
+			echo file_get_contents(get_template_directory() . "/juodas.svg"); 
+			echo "</a>";
+			?>
+			<?php
 			$_s_description = get_bloginfo( 'description', 'display' );
 			if ( $_s_description || is_customize_preview() ) :
 				?>
@@ -90,15 +43,23 @@
 			<?php endif; ?>
 		</div><!-- .site-branding -->
 
-		<nav id="site-navigation" class="main-navigation">
+		<nav id="site-navigation" class="main-navigation nav justify-content-center float-md-end">
 			<button class="menu-toggle" aria-controls="primary-menu" aria-expanded="false"><?php esc_html_e( 'Primary Menu', '_s' ); ?></button>
 			<?php
-			wp_nav_menu(
-				array(
-					'theme_location' => 'menu-1',
+
+			echo preg_replace( '#<li[^>]+>#', '<li class="nav-link fw-bold py-1 px-0">',
+		        wp_nav_menu(
+		            array(
+		            'theme_location' => 'menu-1',
 					'menu_id'        => 'primary-menu',
-				)
-			);
+		                // 'container'         => false,
+		                // 'depth'             => 1,
+		            'echo'              => false
+		            )
+		        )
+		    );
+
 			?>
-		</nav><!-- #site-navigation -->
-	</header><!-- #masthead -->
+		</nav>
+
+	</header>

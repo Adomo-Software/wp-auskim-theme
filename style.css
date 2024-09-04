@@ -656,6 +656,7 @@ textarea {
 	display: none;
 	list-style: none;
 	margin: 0;
+	gap: 1rem;
 	padding-left: 0;
 }
 
@@ -710,6 +711,7 @@ textarea {
 	}
 
 	.main-navigation ul {
+		justify-content: center;
 		display: flex;
 	}
 }

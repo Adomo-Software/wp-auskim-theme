@@ -142,6 +142,7 @@ function _s_scripts() {
 
 	// wp_enqueue_style( 'bootstrap', get_template_directory_uri(). '/bootstrap/dist/css/bootstrap.min.css');
 	wp_enqueue_style( '_s-main', get_template_directory_uri(). '/style/css/main.css');
+	wp_enqueue_style( '_s-niam', get_template_directory_uri(). '/style/main.css');
 
 	wp_style_add_data( '_s-style', 'rtl', 'replace' );
 	wp_enqueue_script( '_s-navigation', get_template_directory_uri() . '/js/navigation.js', array(), _S_VERSION, true );
