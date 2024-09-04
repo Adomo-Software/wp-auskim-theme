@@ -150,6 +150,19 @@ function _s_scripts() {
 
 	wp_enqueue_script( 'bootstrap-popper', 'https://cdn.jsdelivr.net/npm/popper.js@1.12.9/dist/umd/popper.min.js', array('jquery'));
 	wp_enqueue_script( 'bootstrap-script', 'https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/js/bootstrap.min.js', array('jquery'));
+	// wp_enqueue_script( 'cool-mouse-script', get_template_directory_uri() . '/cool-mouse.js', array(), null, true);
+
+    // wp_enqueue_script(
+    //     'cool-mouse', // Handle for the script
+    //     get_site_url() . '/cool-mouse.js', // URL to the script
+    //     array(), // Dependencies (leave empty if none)
+    //     null, // Version number (null or leave empty for no versioning)
+    //     true // Load in footer (set to false if you want to load in the head)
+    // );
+
+// Hook the function into WordPress
+add_action('wp_enqueue_scripts', 'my_custom_scripts');
+
 
 	if ( is_singular() && comments_open() && get_option( 'thread_comments' ) ) {
 		wp_enqueue_script( 'comment-reply' );

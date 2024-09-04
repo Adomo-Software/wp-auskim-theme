@@ -21,20 +21,26 @@
 </head>
 
 <body class="text-center" <?php body_class(); ?>>
+
+
 <?php wp_body_open(); ?>
-<div id="page" class="site cover-container d-flex h-100 mx-auto flex-column">
 	<a class="skip-link screen-reader-text" href="#primary"><?php esc_html_e( 'Skip to content', '_s' ); ?></a>
 
-	<header id="masthead" class="site-header p-3 mb-3">
+	<header id="masthead" class="site-header mb-3">
 		<div class="site-branding">
 
 			 <!-- <object type="image/svg+xml" data="/juodas.svg" class="logo"></object>  -->
 
-			<?php
-			echo '<a href="' . home_url() . '"">';
-			echo file_get_contents(get_template_directory() . "/juodas.svg"); 
-			echo "</a>";
-			?>
+<?php
+// Check if the current page is the home page
+$is_home = is_home() || is_front_page();
+$class = $is_home ? 'home-link' : '';
+
+echo '<a href="' . home_url() . '" class="' . esc_attr($class) . '">';
+echo file_get_contents(get_template_directory() . "/juodas.svg"); 
+echo "</a>";
+?>
+
 			<?php
 			$_s_description = get_bloginfo( 'description', 'display' );
 			if ( $_s_description || is_customize_preview() ) :
@@ -47,7 +53,7 @@
 			<button class="menu-toggle" aria-controls="primary-menu" aria-expanded="false"><?php esc_html_e( 'Primary Menu', '_s' ); ?></button>
 			<?php
 
-			echo preg_replace( '#<li[^>]+>#', '<li class="nav-link fw-bold py-1 px-0">',
+			echo preg_replace( '#<li[^>]+>#', '<li class="nav-link fw-bold">',
 		        wp_nav_menu(
 		            array(
 		            'theme_location' => 'menu-1',
@@ -62,4 +68,13 @@
 			?>
 		</nav>
 
+		<div class="search-icon">
+<i class="bi bi-search"></i>
+          </div>
+
 	</header>
+
+
+<div id="page" class="site cover-container d-flex h-100 mx-auto flex-column">
+	<div class="mt-5"></div>
+	<div class="mt-5"></div>
