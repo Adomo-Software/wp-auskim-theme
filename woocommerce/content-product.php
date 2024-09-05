@@ -24,7 +24,8 @@ if ( empty( $product ) || ! $product->is_visible() ) {
 	return;
 }
 ?>
-<li <?php wc_product_class( '', $product ); ?>>
+<div class="col">
+<li class="card" <?php wc_product_class( '', $product ); ?>>
 	<?php
 	/**
 	 * Hook: woocommerce_before_shop_loop_item.
@@ -46,16 +47,38 @@ if ( empty( $product ) || ! $product->is_visible() ) {
 	 *
 	 * @hooked woocommerce_template_loop_product_title - 10
 	 */
+		?>
+	<div class="card-body">
+		<div class="card-text">
+	<?php
 	do_action( 'woocommerce_shop_loop_item_title' );
 
+		?>
+	<!-- <div class="card-body"> -->
+		</div>
+	<?php
 	/**
 	 * Hook: woocommerce_after_shop_loop_item_title.
 	 *
 	 * @hooked woocommerce_template_loop_rating - 5
 	 * @hooked woocommerce_template_loop_price - 10
 	 */
+
+			?>
+	<div class="d-flex justify-content-between align-items-center">
+		<div class="btn-group">
+	<?php
+
+	?>
+		<div class="btn btn-sm btn-outline-secondary">
+	<?php
+
 	do_action( 'woocommerce_after_shop_loop_item_title' );
 
+	?>
+		</div>
+		<div class="btn btn-sm btn-outline-secondary">
+	<?php
 	/**
 	 * Hook: woocommerce_after_shop_loop_item.
 	 *
@@ -63,5 +86,12 @@ if ( empty( $product ) || ! $product->is_visible() ) {
 	 * @hooked woocommerce_template_loop_add_to_cart - 10
 	 */
 	do_action( 'woocommerce_after_shop_loop_item' );
+		?>
+		</div>
+	<?php
 	?>
+</div>
+</div>
+	</div>
 </li>
+</div>

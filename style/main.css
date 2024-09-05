@@ -4,13 +4,11 @@
 
 body {
     font-family: "DM Sans";
-    color: #f6f3ec !important;
-    overflow: hidden;
 }
 
 .site-branding {
 /*  vertical-align: middle; */
-  width: 7.5rem;
+  width: 9.5rem;
   margin-left: 7rem;
   fill: white;
   position: absolute;
@@ -19,9 +17,12 @@ body {
 }
 
 .site-branding a {
-  height: 100%;
-  display: block;
-  align-content: center;
+    display: flex;
+    height: 100%;
+    gap: 1rem;
+    align-items: center;
+    text-decoration: none;
+    color: white;
 }
 #masthead {
   display: flex;
@@ -124,35 +125,6 @@ body {
 
 
 
-.container {
-    position: relative;
-    width: 100vw;
-    height: 100vh;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
-
-.content {
-    position: relative;
-    z-index: 1;
-    color: white; /* Adjust text color for contrast */
-    text-align: center;
-}
-
-.mask {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background: rgba(0, 0, 0, 0.5); /* Mask color and transparency */
-    pointer-events: none;
-    transition: background 0.3s ease;
-    clip-path: circle(0% at var(--cursor-x) var(--cursor-y));
-}
-
-
 
 .site-header {
   position: relative;
@@ -219,7 +191,7 @@ body {
 }
 
 
-.site-branding a::before,
+/*.site-branding a::before,*/
 .main-navigation a::before {
     content: '';
     height: 2px;
@@ -248,4 +220,36 @@ body {
 .search-icon {
     position: absolute;
     right: 7.5rem;
+}
+
+
+
+.woocommerce-loop-product__title {
+  font-size: 1rem;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  /*! text-overflow: ellipsis; */
+  /*! line-clamp: 2; */
+}
+
+.attachment-woocommerce_thumbnail {
+    object-fit: cover;
+    width: 100%;
+    height: 16rem;
+}
+
+.card {
+    background-color: rgba(255, 255, 255, 0.1);
+}
+.card a {
+    text-decoration: none;
+}
+.card bdi {
+    color: white;
+}
+
+.btn-group {
+    width: 100%;
 }

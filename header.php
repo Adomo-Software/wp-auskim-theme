@@ -31,12 +31,16 @@
 
 			 <!-- <object type="image/svg+xml" data="/juodas.svg" class="logo"></object>  -->
 
+
 <?php
 // Check if the current page is the home page
 $is_home = is_home() || is_front_page();
-$class = $is_home ? 'home-link' : '';
+$class = $is_home ? '' : ''; //home-link
 
 echo '<a href="' . home_url() . '" class="' . esc_attr($class) . '">';
+
+echo '<i class="bi bi-house"></i>';
+// echo '';
 echo file_get_contents(get_template_directory() . "/juodas.svg"); 
 echo "</a>";
 ?>
